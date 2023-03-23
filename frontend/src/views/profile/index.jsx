@@ -1,4 +1,5 @@
 import { Box, useMediaQuery } from "@mui/material";
+import { env } from "constant";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
@@ -17,7 +18,7 @@ const Profile = () => {
     const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
 
     const getUser = async () => {
-        const response = await fetch(`http://localhost:8991/user/${userId}`, {
+        const response = await fetch(`${env.API_URL}/user/${userId}`, {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` }
         })

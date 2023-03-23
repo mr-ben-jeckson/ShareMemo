@@ -12,9 +12,9 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { env } from "constant";
 
 const UserWidget = ({ userId, picturePath }) => {
-
     const { t } = useTranslation();
     const [user, setUser] = useState(null);
     const { palette } = useTheme();
@@ -26,7 +26,7 @@ const UserWidget = ({ userId, picturePath }) => {
     const main = palette.neutral.main;
 
     const getUser = async () => {
-        const response = await fetch(`http://localhost:8991/user/${userId}`,
+        const response = await fetch(`${env.API_URL}/user/${userId}`,
             {
                 method: "GET",
                 headers: { Authorization: `Bearer ${token}` }
@@ -118,7 +118,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
                 <FlexBetween gap="1rem" mb="0.5rem">
                     <FlexBetween gap="1rem">
-                        <img src="../assets/twitter.png" alt="twitter" />
+                        <img src={`${env.APP_URL}/assets/twitter.png`} alt="twitter" />
                         <Box>
                             <Typography color={main} fontWeight="500">
                             { t('twitter') }
@@ -132,7 +132,7 @@ const UserWidget = ({ userId, picturePath }) => {
                 </FlexBetween>
                 <FlexBetween gap="1rem" mb="0.5rem">
                     <FlexBetween gap="1rem">
-                        <img src="../assets/linkedin.png" alt="linkedin" />
+                        <img src={`${env.APP_URL}/assets/linkedin.png`} alt="linkedin" />
                         <Box>
                             <Typography color={main} fontWeight="500">
                             { t('linkedin') }

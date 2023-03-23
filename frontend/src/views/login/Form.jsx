@@ -17,6 +17,7 @@ import Dropzone from "react-dropzone";
 import FlexBetween from "components/FlexBetween";
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
+import { env } from "constant";
 
 const registerSchema = yup.object().shape({
     firstName: yup.string().required('required'),
@@ -65,7 +66,7 @@ const From = () => {
         }
         formData.append('picturePath', values.picture.name);
         const savedUserResponse = await fetch(
-            "http://localhost:8991/auth/register",
+            `${env.API_URL}/auth/register`,
             {
                 method: "POST",
                 body: formData
@@ -80,7 +81,7 @@ const From = () => {
 
     const login = async (values, onSubmitProps) => {
         const loggedInResponse = await fetch(
-            "http://localhost:8991/auth/login",
+            `${env.API_URL}/auth/login`,
             {
                 method: "POST",
                 headers: { "Content-Type": "Application/json" },

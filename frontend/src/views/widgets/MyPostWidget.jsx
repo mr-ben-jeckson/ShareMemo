@@ -25,6 +25,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
 import { useTranslation } from "react-i18next";
+import { env } from "constant";
 
 const MyPostWidget = ({ picturePath }) => {
     const { t } = useTranslation();
@@ -48,7 +49,7 @@ const MyPostWidget = ({ picturePath }) => {
             formData.append("picturePath", image.name);
         }
 
-        const response = await fetch(`http://localhost:8991/post`, {
+        const response = await fetch(`${env.API_URL}/post`, {
             method: "POST",
             headers: { Authorization: `Bearer ${token}` },
             body: formData

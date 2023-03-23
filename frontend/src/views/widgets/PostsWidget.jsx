@@ -1,3 +1,4 @@
+import { env } from "constant";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
@@ -9,7 +10,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     const token = useSelector((state) => state.token);
 
     const getPosts = async () => {
-        const response = await fetch("http://localhost:8991/posts", {
+        const response = await fetch(`${env.API_URL}/posts`, {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` }
         })
@@ -18,7 +19,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     }
 
     const getUserPosts = async () => {
-        const response = await fetch(`http://localhost:8991/posts/${userId}/posts`, {
+        const response = await fetch(`${env.API_URL}/posts/${userId}/posts`, {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` }
         })
