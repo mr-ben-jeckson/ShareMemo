@@ -1,4 +1,10 @@
 
+## Author
+
+- [@ben-jeckson](https://github.com/mr-ben-jeckson)
+
+## Acknowledgements
+This project is open sourced MERN Stack Application and you can put your portfolio the whole entired project or parts of them.
 ## API References of Backend
 
 #### REGISTER
