@@ -91,3 +91,66 @@ This project is open sourced MERN Stack Application and you can put your portfol
 
 
 
+
+## Installation
+
+```
+git clone https://github.com/mr-ben-jeckson/ShareMemo
+```
+```
+cd backend && npm install 
+```
+```
+open .env.example and copy all
+```
+```
+touch .env or create a new file .env
+```
+```
+MONGO_URL = cluster or mongodb://127.0.0.1:27017/MONGO_LOCAL_MONGO_DB 
+PORT = Your host port or 5000
+JWT_SECRET = Your secret string or @34iKnmQt
+```
+```
+cd ../ Back to Main Folder and cd frontend
+```
+```
+npm install
+```
+```
+npm start
+```
+```
+open constant.js in src Folder
+```
+```
+replace your environment variables for base url and api url 
+
+export const env = {
+    APP_URL: "here for client",
+    API_URL: "here for server"
+};
+```
+```
+Enjoy the app
+```
+
+# ShareMemo 
+
+A photo sharing social media with friend
+
+
+
+## Landing Page after login
+
+![App Screenshot](https://raw.githubusercontent.com/mr-ben-jeckson/molla-theme/main/lib/scs.PNG)
+
+
+
+
+## Tech Stack
+
+**Client:** React, Redux, Material UI, Material Icons,
+
+**Server:** Node, Express
+
