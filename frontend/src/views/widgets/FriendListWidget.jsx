@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { setFriends } from "state";
 
-const FriendListWidget = ({ userId }) => {
+const FriendListWidget = ({ userId, isHim = false, name = undefined }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const { palette } = useTheme();
@@ -35,7 +35,7 @@ const FriendListWidget = ({ userId }) => {
                 fontWeight="500"
                 sx={{ mb: "1.5rem"}}
             >
-                {t('friendLists')}
+                {isHim && (<>{name} { t('of') }</>)} {t('friendLists')}
             </Typography>
             <Box display="flex" flexDirection="column" gap="1.5rem">
                 {friends.map((friend) => (
@@ -45,6 +45,7 @@ const FriendListWidget = ({ userId }) => {
                         name={`${friend.firstName} ${friend.lastName}`}
                         subtitle={friend.occupation}
                         userPicturePath={friend.picturePath}
+                        isProfile={isHim}
                     />
                 ))}
             </Box>

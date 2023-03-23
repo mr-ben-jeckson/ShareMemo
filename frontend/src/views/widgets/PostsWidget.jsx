@@ -33,6 +33,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
             getPosts();
         }// eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
     return (
         <>
         {posts.map(({

@@ -1,6 +1,8 @@
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import Form from "./Form";
 const Login = () => {
+    const { t } = useTranslation();
     const theme = useTheme();
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
@@ -22,7 +24,7 @@ const Login = () => {
                 backgroundColor={theme.palette.background.alt}
                 >
                     <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem"}}>
-                        Welcome to ShareMemo. Explored Photo Memories with Friends
+                        { t('welcomeText') }
                     </Typography>
                     <Form />
             </Box>

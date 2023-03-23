@@ -16,19 +16,20 @@ import { setLogin } from "state";
 import Dropzone from "react-dropzone";
 import FlexBetween from "components/FlexBetween";
 import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next";
 
 const registerSchema = yup.object().shape({
-    firstName: yup.string().required("required"),
-    lastName: yup.string().required("required"),
-    email: yup.string().email("Invalid Email").required("required"),
-    password: yup.string().required("required"),
-    location: yup.string().required("required"),
-    occupation: yup.string().required("required"),
-    picture: yup.string().required("required")
+    firstName: yup.string().required('required'),
+    lastName: yup.string().required('required'),
+    email: yup.string().email('invalidEmail').required('required'),
+    password: yup.string().required('required'),
+    location: yup.string().required('required'),
+    occupation: yup.string().required('required'),
+    picture: yup.string().required('required')
 });
 
 const loginSchema = yup.object().shape({
-    email: yup.string().email("Invalid Email").required("required"),
+    email: yup.string().email("invalidEmail").required("required"),
     password: yup.string().required("required"),
 });
 
@@ -48,6 +49,7 @@ const initialValueLogin = {
 };
 
 const From = () => {
+    const { t } = useTranslation();
     const [pageType, setPageType] = useState("login");
     const { palette } = useTheme();
     const dispatch = useDispatch();
@@ -103,6 +105,7 @@ const From = () => {
     };
     return (
         <Formik
+            autoComplete='off'
             onSubmit={handleFormSubmit}
             initialValues={isLogin ? initialValueLogin : initialValueRegister}
             validationSchema={isLogin ? loginSchema : registerSchema}
@@ -140,43 +143,43 @@ const From = () => {
                         {isRegister && (
                             <>
                                 <TextField
-                                    label="First Name"
+                                    label={t('firstName')}
                                     onBlur={handleBlur}
                                     onChange={handleChange}
                                     value={values.firstName}
                                     name="firstName"
                                     error={Boolean(touched.firstName) && Boolean(errors.firstName)}
-                                    helperText={touched.firstName && errors.firstName}
+                                    helperText={touched.firstName && t(errors.firstName)}
                                     sx={{ gridColumn: "span 2" }}
                                 />
                                 <TextField
-                                    label="Last Name"
+                                    label={t('lastName')}
                                     onBlur={handleBlur}
                                     onChange={handleChange}
                                     value={values.lastName}
                                     name="lastName"
                                     error={Boolean(touched.lastName) && Boolean(errors.lastName)}
-                                    helperText={touched.lastName && errors.lastName}
+                                    helperText={touched.lastName && t(errors.lastName)}
                                     sx={{ gridColumn: "span 2" }}
                                 />
                                 <TextField
-                                    label="Location"
+                                    label={t('location')}
                                     onBlur={handleBlur}
                                     onChange={handleChange}
                                     value={values.location}
                                     name="location"
                                     error={Boolean(touched.location) && Boolean(errors.location)}
-                                    helperText={touched.location && errors.location}
+                                    helperText={touched.location && t(errors.location)}
                                     sx={{ gridColumn: "span 4" }}
                                 />
                                 <TextField
-                                    label="Occupation"
+                                    label={t('occupation')}
                                     onBlur={handleBlur}
                                     onChange={handleChange}
                                     value={values.occupation}
                                     name="occupation"
                                     error={Boolean(touched.occupation) && Boolean(errors.occupation)}
-                                    helperText={touched.occupation && errors.occupation}
+                                    helperText={touched.occupation && t(errors.occupation)}
                                     sx={{ gridColumn: "span 4" }}
                                 />
                                 <Box
@@ -201,7 +204,7 @@ const From = () => {
                                             >
                                                 <input {...getInputProps()} />
                                                 {!values.picture ? (
-                                                    <p>Add Profile Photo Here</p>
+                                                    <p>{t('addImage')}</p>
                                                 ) : (
                                                     <FlexBetween>
                                                         <Typography>{values.picture.name}</Typography>
@@ -216,25 +219,27 @@ const From = () => {
                         )}
 
                         <TextField
-                            label="Email"
+                            label={t('email')}
                             onBlur={handleBlur}
                             onChange={handleChange}
                             value={values.email}
                             name="email"
                             error={Boolean(touched.email) && Boolean(errors.email)}
-                            helperText={touched.email && errors.email}
+                            helperText={touched.email && t(errors.email)}
                             sx={{ gridColumn: "span 4" }}
+                            autoComplete="off"
                         />
                         <TextField
-                            label="Password"
+                            label={t('password')}
                             type="password"
                             onBlur={handleBlur}
                             onChange={handleChange}
                             value={values.password}
                             name="password"
                             error={Boolean(touched.password) && Boolean(errors.password)}
-                            helperText={touched.password && errors.password}
+                            helperText={touched.password && t(errors.password)}
                             sx={{ gridColumn: "span 4" }}
+                            autoComplete="off"
                         />
                     </Box>
 
@@ -251,7 +256,7 @@ const From = () => {
                                 "&:hover": { color: palette.primary.main }
                             }}
                         >
-                            {isLogin ? "LOG IN" : "REGISTER"}
+                            {isLogin ? t('login') : t('register')}
                         </Button>
                         <Typography
                             onClick={() => {
@@ -267,7 +272,7 @@ const From = () => {
                                 }
                             }}
                         >
-                            {isLogin ? "Don't have an account. Sign Up Here" : "Already have an account. Login Here"}
+                            {isLogin ? t('linktoRegister') : t('linktoLogin')}
                         </Typography>
                     </Box>
                 </form>
