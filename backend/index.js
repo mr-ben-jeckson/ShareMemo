@@ -14,9 +14,9 @@ import userRoutes from "./routes/user.js";
 import postRoutes from "./routes/post.js";
 import { verfiyToken } from "./middlewares/auth.js";
 import { createPost } from "./controllers/post.js";
-// import User from "./models/user.js";
-// import Post from "./models/post.js";
-// import { users, posts } from "./dummy/index.js"; // To seed once
+import User from "./models/user.js";
+import Post from "./models/post.js";
+import { users, posts } from "./dummy/index.js"; // To seed once
 
 
 /** Confirgulation */
@@ -62,7 +62,7 @@ mongoose.connect(process.env.MONGO_URL, {
 })
 .then(() => {
     app.listen(PORT, ()=> console.log(`Server is running at the port ${PORT}`));
-    // User.insertMany(users);
-    // Post.insertMany(posts);
+    User.insertMany(users);
+    Post.insertMany(posts);
 })
 .catch((error) => console.log(`${error}. Did not connect mongo database`));
