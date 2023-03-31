@@ -1,4 +1,4 @@
 export const env = {
-    APP_URL: "http://localhost:3000",
-    API_URL: "http://localhost:8991"
+    APP_URL: "https://sharememo-app.vercel.app/",
+    API_URL: "https://apis-sharememo.onrender.com"
 };

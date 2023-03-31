@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { setFriends } from "state";
 import FlexBetween from "./FlexBetween";
 import UserImage from "./UserImage";
+import { env } from "constant";
 
 const Friend = ({ friendId, name, subtitle, userPicturePath, isProfile = false }) => {
     const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath, isProfile = false }
     const medium = palette.neutral.medium;
 
     const patchFriend = async () => {
-        const response = await fetch(`http://localhost:8991/user/${_id}/${friendId}`, {
+        const response = await fetch(`${env.API_URL}/user/${_id}/${friendId}`, {
             method: "PATCH",
             headers: {
                 Authorization: `Bearer ${token}`,

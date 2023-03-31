@@ -1,4 +1,5 @@
 import { Box } from "@mui/system";
+import { env } from "constant";
 
 const UserImage = ({ image, size = "60px"}) => {
     return (
@@ -8,7 +9,7 @@ const UserImage = ({ image, size = "60px"}) => {
                 width={size}
                 height={size}
                 alt="user"
-                src={`http://localhost:8991/assets/${image}`}
+                src={`${env.API_URL}/assets/${image}`}
             />
         </Box>
     )
